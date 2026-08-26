@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tree Assessment App for Consulting Arborists | TIMBR Field</title>
-<meta name="description" content="TIMBR Field is a mobile tree assessment app for Australian arboricultural consultancies. Structured inspections built around AS 4970:2025, photos tagged with GPS, works with no signal, and every record syncs into your own Microsoft 365 and SharePoint. Private beta now open.">
+<meta name="description" content="TIMBR Field is a mobile tree assessment app for Australian arboricultural consultancies. Structured inspections built around AS 4970:2025, photos tagged with GPS, works with no signal, and every record syncs into your own Microsoft 365 and SharePoint. Private beta, five places left.">
 <meta name="keywords" content="tree assessment app, arborist software Australia, AS 4970 2025 software, arboricultural impact assessment, tree inspection app, consulting arborist software, NRZ SRZ calculator, TPZ calculator, tree survey app offline, arboricultural consultancy software">
 <meta name="author" content="SG Arboricultural Consulting">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -39,8 +39,16 @@
       "url": "https://timbrfield.com.au/",
       "telephone": "+61400777395",
       "email": "hello@timbrfield.com.au",
-      "areaServed": { "@type": "Country", "name": "Australia" },
-      "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressRegion": "VIC", "addressCountry": "AU" },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Australia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Melbourne",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      },
       "description": "An arboricultural consultancy in Melbourne building field and office software for consulting arborists."
     },
     {
@@ -52,27 +60,14 @@
       "description": "A mobile tree assessment app for arboricultural consultancies. Structured inspection workflows built around AS 4970:2025, photo capture tagged with GPS, a write queue that works with no signal, and sync into the customer's own Microsoft 365 and SharePoint tenant.",
       "url": "https://timbrfield.com.au/",
       "softwareVersion": "Private beta",
-      "publisher": { "@id": "https://timbrfield.com.au/#organization" },
-      "offers": { "@type": "Offer", "availability": "https://schema.org/PreOrder", "priceCurrency": "AUD" }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "Does TIMBR Field work when there is no phone signal?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every entry is saved to a queue on the device the moment you tap save. You can assess a whole site with the phone in flight mode. When you get back into range the queue syncs into your SharePoint site on its own." } },
-        { "@type": "Question", "name": "Where is my tree data stored?",
-          "acceptedAnswer": { "@type": "Answer", "text": "In your own Microsoft 365 tenant, as SharePoint lists and files. There is no TIMBR database holding your projects. Your existing permissions, retention rules and backups apply to it the same way they apply to everything else in your tenant." } },
-        { "@type": "Question", "name": "What happens to my data if I stop using TIMBR Field?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nothing. It is already in your tenant in standard formats. You keep every assessment, every photo and every report exactly where it sits today. There is no export to request and no data to be held hostage." } },
-        { "@type": "Question", "name": "Does it calculate the NRZ and SRZ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. It shows the reference Notional Root Zone and Structural Root Zone worked out from the trunk diameter measurements you enter, using the method in AS 4970:2025. The NRZ is what the 2009 standard called the TPZ. They are labelled as reference figures, because setting the actual Tree Protection Zone on site is a judgement for the project arborist." } },
-        { "@type": "Question", "name": "Do I need Microsoft 365 to use it?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. TIMBR Field signs in with your Microsoft 365 accounts and writes into your SharePoint site. If your consultancy already runs on Microsoft 365 then setup takes minutes and your IT team has nothing new to assess." } },
-        { "@type": "Question", "name": "Can I get the data out into CAD or a spreadsheet?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Because records live as SharePoint lists you can open them in Excel at any time. TIMBR Hub and the QGIS plugin read the same data for plans and reports, and standard exports suit anyone still drafting in CAD." } },
-        { "@type": "Question", "name": "How much does TIMBR Field cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pricing is not set while the product is in private beta. Consultancies who join the beta will be told pricing before anything is charged, and will keep beta pricing for the first twelve months after launch." } }
-      ]
+      "publisher": {
+        "@id": "https://timbrfield.com.au/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/PreOrder",
+        "priceCurrency": "AUD"
+      }
     }
   ]
 }
@@ -89,13 +84,13 @@
     </a>
     <nav aria-label="Main navigation">
       <ul class="nav-links" id="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#ownership">Your data</a></li>
-        <li><a href="#councils">Councils</a></li>
-        <li><a href="#suite">The suite</a></li>
-        <li><a href="#about">Who built it</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="data-ownership.html">Your data</a></li>
+        <li><a href="for-councils.html">Councils</a></li>
+        <li><a href="suite.html">The suite</a></li>
         <li><a href="resources.html">Resources</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
     </nav>
     <div style="display:flex;gap:12px;align-items:center">
@@ -189,77 +184,33 @@
     </div>
   </div>
 </section>
-<section id="features" style="padding-top:0">
+<section id="features">
   <div class="container">
     <div class="section-head reveal">
       <p class="kicker">What it does on site</p>
       <h2>Everything a site inspection needs, and nothing it does not.</h2>
-      <p>The app walks each tree from arrival to a finished record. It is the same sequence you already follow in your head, just written down properly, and it keeps working ten metres past the last bar of reception.</p>
-    </div>
-
-    <div class="feature-row reveal">
-      <div class="feature-copy">
-        <h3>A form that speaks arboriculture</h3>
-        <p>Species, dimensions, age class, health, structure, SULE, retention value and recommended works, captured in a guided sequence with sensible lists to choose from. Nobody has to remember the wording. Records come back complete, and they come back the same whoever did the inspection.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> A searchable species library, botanical and common names</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Recommended works recorded against the tree, ready for the report</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Site context and client details travel with every assessment</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="phone"><img src="img/field-species.webp" alt="Species selection screen in TIMBR Field with botanical and common name search and height and spread measurements" width="640" height="1388" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-
-    <div class="feature-row flip reveal">
-      <div class="feature-copy">
-        <h3>AS 4970:2025 figures worked out while you type</h3>
-        <p>Enter the trunk diameter and the app shows you the reference Notional Root Zone and Structural Root Zone straight away, worked out the way the 2025 standard sets out. The NRZ is the figure the old standard called the TPZ. Setting the actual Tree Protection Zone on the ground is still your call, which is exactly how the standard intends it. This just saves you doing the sums on the back of a form in the wind.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> NRZ and SRZ reference figures in your hand at the tree</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> The 2025 terminology, so your records match the standard you report against</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Council audit workflows for checking scheduled works</li>
-        </ul>
-        <p style="margin-top:18px"><a href="calculator.html" style="font-weight:600">Try the free NRZ and SRZ calculator</a><span style="color:var(--dim)">, or read <a href="as-4970-2025.html" style="font-weight:600">what changed in the 2025 revision</a>.</span></p>
-      </div>
-      <div class="feature-visual">
-        <div class="phone"><img src="img/field-rootzones.webp" alt="Measurement screen showing trunk diameter inputs with AS 4970:2025 reference calculations for the Notional Root Zone and Structural Root Zone" width="640" height="1388" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-
-    <div class="feature-row reveal">
-      <div class="feature-copy">
-        <h3>Reception is not your problem any more</h3>
-        <p>Every entry is written to the phone the moment you save it. Assess a whole site in a valley with the phone in flight mode if you like. When you drive back into range the queue empties itself into your SharePoint site, and the project list tells you exactly what has gone and what is still waiting.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Full capture with zero connectivity, photos included</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Clear status on every project, so nothing is quietly lost</li>
-          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Records and images travel together, nothing left behind</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="phone"><img src="img/field-projects.webp" alt="Project list in TIMBR Field showing sync status, client, council and tree counts for each job" width="640" height="1388" loading="lazy" decoding="async"></div>
-      </div>
+      <p>The app walks each tree from arrival to a finished record. A form that speaks arboriculture, AS 4970:2025 figures worked out while you type, photos tagged where you took them, and a queue that keeps working ten metres past the last bar of reception.</p>
     </div>
 
     <div class="mini-grid">
       <div class="mini-card reveal">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 19s-6.5-4.2-6.5-9.4A6.5 6.5 0 0 1 11 3a6.5 6.5 0 0 1 6.5 6.6C17.5 14.8 11 19 11 19Z" stroke="#8FBE7C" stroke-width="1.6" stroke-linejoin="round"/><circle cx="11" cy="9.5" r="2.4" stroke="#8FBE7C" stroke-width="1.6"/></svg></div>
-        <h3>Photos that stay attached</h3>
-        <p>Take the photo in the app and it belongs to that tree forever, with the location it was taken at. When a report gets questioned two years later, the evidence is still where you left it.</p>
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="17" height="14" rx="2.5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M2.5 9h17M7.5 4v5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M6 13h5M6 15.5h3" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>A form that speaks arboriculture</h3>
+        <p>Species, dimensions, health, structure, SULE and retention captured in a guided sequence. Every consultant records a tree the same way.</p>
       </div>
       <div class="mini-card reveal">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="2.5" y="4" width="17" height="14" rx="2.5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M2.5 9h17M7.5 4v5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M6 13h5M6 15.5h3" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <h3>The job details come with it</h3>
-        <p>Client, address, council, report type and inspection date sit with every assessment, so the person writing the report is not chasing you for context.</p>
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="8.5" stroke="#8FBE7C" stroke-width="1.6" stroke-dasharray="4 3.5"/><circle cx="11" cy="11" r="3.6" stroke="#8FBE7C" stroke-width="1.6"/></svg></div>
+        <h3>AS 4970:2025 while you type</h3>
+        <p>Reference NRZ and SRZ figures worked out from your measurements, multi stemmed trees combined properly, in the 2025 terminology.</p>
       </div>
       <div class="mini-card reveal">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M14.5 8a4.5 4.5 0 1 0-8.7 1.6A3.6 3.6 0 0 0 6.6 16.7h7.9a3.6 3.6 0 0 0 .6-7.15" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round"/><path d="M11 10.5V16m0-5.5L8.8 12.7M11 10.5l2.2 2.2" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Nothing new for IT to approve</h3>
-        <p>Sign in is your existing Microsoft 365 account. The app writes to SharePoint lists and libraries your organisation already runs. There is no new platform to certify.</p>
+        <h3>Reception is not your problem</h3>
+        <p>Assess a whole site in flight mode. The queue empties into your SharePoint when you are back in range, and tells you exactly what is still waiting.</p>
       </div>
     </div>
+
+    <p style="margin-top:28px" class="reveal"><a class="btn btn-ghost" href="features.html">See everything it does on site</a></p>
   </div>
 </section>
 
@@ -273,7 +224,7 @@
     <div class="own-grid">
       <div class="diagram reveal">
         <svg viewBox="0 0 560 400" role="img" aria-labelledby="diagram-title">
-          <title id="diagram-title">Diagram showing TIMBR Field on a phone syncing through Microsoft Graph directly into the customer's own Microsoft 365 tenant, into SharePoint lists and project files, with no third party database in between.</title>
+          <title id="diagram-title">Diagram showing TIMBR Field on a phone syncing through Microsoft Graph directly into the customer's own Microsoft 365 tenant, with no third party database in between.</title>
           <rect x="30" y="120" width="150" height="160" rx="16" fill="#152619" stroke="rgba(190,215,185,.28)"/>
           <rect x="55" y="140" width="100" height="8" rx="4" fill="#2F5C40"/>
           <text x="105" y="185" fill="#EDF3E9" font-size="15" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">TIMBR Field</text>
@@ -306,20 +257,17 @@
       <div class="own-points">
         <div class="own-point reveal">
           <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.5 3 4.8v4.4c0 4.4 3 7.3 7 8.8 4-1.5 7-4.4 7-8.8V4.8L10 1.5Z" stroke="#8FBE7C" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.8 10l2.2 2.2 4.2-4.4" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div><h3>Governed the way you already govern</h3><p>Permissions, retention, auditing and backup. Every control your organisation puts on SharePoint applies to your tree data automatically. There is nothing extra to set up and nothing extra to certify.</p></div>
-        </div>
-        <div class="own-point reveal">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="8.5" width="15" height="9" rx="2.5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M6.5 8.5V6a3.5 3.5 0 0 1 7 0v2.5" stroke="#8FBE7C" stroke-width="1.6"/><circle cx="10" cy="13" r="1.6" fill="#8FBE7C"/></svg></div>
-          <div><h3>An easy answer to a hard question</h3><p>When a council asks where the data lives, you get to say "in our own tenant" instead of naming a vendor they have never heard of. That answer moves a procurement conversation along faster than any feature list.</p></div>
+          <div><h3>Governed the way you already govern</h3><p>Permissions, retention, auditing and backup. Every control your organisation puts on SharePoint applies to your tree data automatically.</p></div>
         </div>
         <div class="own-point reveal">
           <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 13.5 3.5 10 7 6.5M13 6.5 16.5 10 13 13.5" stroke="#8FBE7C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div><h3>You cannot be locked in</h3><p>Your records are SharePoint lists and ordinary files. Stop paying us tomorrow and you lose nothing, because everything is already sitting where it always was. There is no export to beg for.</p></div>
+          <div><h3>You cannot be locked in</h3><p>Your records are SharePoint lists and ordinary files. Stop paying us tomorrow and you lose nothing, because everything is already where it always was.</p></div>
         </div>
         <div class="own-point reveal">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16V9M10 16V4M16 16v-6" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-          <div><h3>One set of numbers</h3><p>Field capture, office reporting and the spatial work all read and write the same records in the same place. No exports between systems, no arguing about which spreadsheet is current.</p></div>
+          <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="8.5" width="15" height="9" rx="2.5" stroke="#8FBE7C" stroke-width="1.6"/><path d="M6.5 8.5V6a3.5 3.5 0 0 1 7 0v2.5" stroke="#8FBE7C" stroke-width="1.6"/><circle cx="10" cy="13" r="1.6" fill="#8FBE7C"/></svg></div>
+          <div><h3>An easy answer to a hard question</h3><p>When a council asks where the data lives, you get to say "in our own tenant" instead of naming a vendor they have never heard of.</p></div>
         </div>
+        <p style="margin-top:22px"><a class="btn btn-ghost" href="data-ownership.html">How the data architecture works</a></p>
       </div>
     </div>
   </div>
@@ -329,27 +277,19 @@
     <div class="section-head reveal">
       <p class="kicker">For councils and records teams</p>
       <h2>The questions your IT and records people will ask.</h2>
-      <p>If you work in local government, the software is the easy part. Getting it past procurement, records management and information security is the real job. Here is the short version, so you can forward this page instead of writing an email.</p>
+      <p>If you work in local government, the software is the easy part. Getting it past procurement, records management and information security is the real job.</p>
     </div>
     <div class="council-grid">
       <div class="council-card reveal">
         <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2 3.5 5v4.2c0 4.2 2.8 6.9 6.5 8.3 3.7-1.4 6.5-4.1 6.5-8.3V5L10 2Z" stroke="#8FBE7C" stroke-width="1.5" stroke-linejoin="round"/></svg> Where does the data actually sit?</h3>
-        <p>In your tenant, in your SharePoint site, in the region your Microsoft 365 tenant is already provisioned in. We do not copy it anywhere else and we do not keep a copy. If your tenant is in Australia, your tree data is in Australia.</p>
-      </div>
-      <div class="council-card reveal">
-        <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="2.5" width="14" height="15" rx="2" stroke="#8FBE7C" stroke-width="1.5"/><path d="M6.5 7h7M6.5 10.5h7M6.5 14h4" stroke="#8FBE7C" stroke-width="1.5" stroke-linecap="round"/></svg> How does this fit our records obligations?</h3>
-        <p>Assessments are SharePoint list items and library files, so whatever retention labels, disposal schedules and classification your records team already applies can be applied to them. Nothing sits outside your recordkeeping system waiting to be discovered later.</p>
+        <p>In your tenant, in your SharePoint site, in the region your Microsoft 365 tenant is already provisioned in. If your tenant is in Australia, your tree data is in Australia.</p>
       </div>
       <div class="council-card reveal">
         <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="#8FBE7C" stroke-width="1.5"/><path d="M10 6v4.4l2.8 1.8" stroke="#8FBE7C" stroke-width="1.5" stroke-linecap="round"/></svg> What if TIMBR goes away?</h3>
-        <p>It is a fair question to ask a small vendor and we would rather answer it than dodge it. If we disappeared tomorrow, every assessment, photo and report you have made stays in your tenant, in readable formats, and your team keeps working. That is not a promise, it is just how the architecture works.</p>
-      </div>
-      <div class="council-card reveal">
-        <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 15.5V8l6-4.5L16 8v7.5" stroke="#8FBE7C" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 15.5v-4h4v4" stroke="#8FBE7C" stroke-width="1.5" stroke-linejoin="round"/></svg> Who are we buying from?</h3>
-        <p>SG Arboricultural Consulting, an Australian arboricultural consultancy based in Melbourne. You can call us on the number in the footer and speak to the person who builds it and uses it on his own jobs.</p>
+        <p>It is a fair question to ask a small vendor and we would rather answer it than dodge it. Every assessment stays in your tenant in readable formats and your team keeps working. That is not a promise, it is how the architecture works.</p>
       </div>
     </div>
-    <p style="margin-top:26px;color:var(--dim);font-size:.92rem" class="reveal">Need something more formal for a procurement pack? Ask us and we will put it in writing.</p>
+    <p style="margin-top:26px" class="reveal"><a class="btn btn-ghost" href="for-councils.html">Records, procurement and the rest</a></p>
   </div>
 </section>
 
@@ -358,7 +298,7 @@
     <div class="section-head reveal">
       <p class="kicker">The rest of the toolkit</p>
       <h2>Field is where it starts. The suite finishes the job.</h2>
-      <p>Capturing good data on site is only worth something if it turns into a report without being handled three more times. That is what the other two pieces are for, and they read the same records in the same tenant.</p>
+      <p>Capturing good data on site is only worth something if it turns into a report without being handled three more times. All three pieces read the same records in the same tenant.</p>
     </div>
     <div class="suite-grid">
       <div class="suite-card hero-card reveal">
@@ -369,16 +309,16 @@
           <span class="suite-tag">This app, in beta</span>
           <h3>TIMBR Field</h3>
           <p>The phone in your pocket on site. Structured assessments, photos with locations, and a queue that does not care whether you have signal.</p>
-          <a class="btn btn-primary" href="#beta" style="align-self:flex-start;padding:10px 20px">Apply for beta access</a>
+          <a class="btn btn-primary" href="features.html" style="align-self:flex-start;padding:10px 20px">What it does</a>
         </div>
       </div>
       <div class="suite-card reveal">
-        <div class="suite-media"><img src="img/hub-dashboard.webp" width="1400" height="905" alt="TIMBR Hub desktop console showing a business overview dashboard with project progress and system readiness" loading="lazy" decoding="async"></div>
+        <div class="suite-media"><img src="img/hub-dashboard.webp" alt="TIMBR Hub desktop console showing a business overview dashboard with project progress" width="1400" height="905" loading="lazy" decoding="async"></div>
         <div class="suite-body">
           <span class="suite-tag">On the desk</span>
           <h3>TIMBR Hub</h3>
-          <p>The office side. Connect your Microsoft 365 tenant once, then manage projects and consultants, schedule site visits, and see which reports are ready to go out.</p>
-          <span class="suite-note">Part of the same platform</span>
+          <p>The office side. Manage projects and consultants, schedule site visits, and see which reports are ready to go out.</p>
+          <a href="suite.html" style="font-weight:600;font-size:.92rem">More about Hub</a>
         </div>
       </div>
       <div class="suite-card reveal">
@@ -388,15 +328,11 @@
         <div class="suite-body">
           <span class="suite-tag">On the plan</span>
           <h3>TIMBR QGIS plugin</h3>
-          <p>Bring in the development plans, work with your captured trees spatially, and generate the Arboricultural Impact Assessment from the same data you collected on site.</p>
-          <span class="suite-note">Part of the same platform</span>
+          <p>Bring in the development plans, work with your trees spatially, and generate the Arboricultural Impact Assessment from the same data.</p>
+          <a href="suite.html" style="font-weight:600;font-size:.92rem">More about the plugin</a>
         </div>
       </div>
     </div>
-    <figure class="suite-wide reveal">
-      <img src="img/hub-trees.webp" width="1400" height="817" alt="TIMBR Hub project workspace showing captured trees plotted on a map alongside assessment details, dimensions and AS 4970 reference figures" loading="lazy" decoding="async">
-      <figcaption>From the phone to the plan. Trees captured in the field, on the map back at the office, same records, same tenant, nothing typed twice.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -422,9 +358,9 @@
       <div class="about-copy reveal">
         <p class="lead">I have spent the last seven years in this industry, first in the tree, then writing the reports about it. TIMBR came out of the gap between those two jobs.</p>
         <p>Climbing teaches you what actually matters about a tree and how quickly you can read one. Consulting teaches you that none of that is worth much unless it survives the trip back to the office in a form somebody else can use. The tools we had were good at one or the other, never both.</p>
-        <p>So TIMBR Field is shaped by the way an assessment really goes. The fields are in the order you look at things. The species list has the trees we actually plant here. The offline queue exists because half the sites I work on have no reception, and I got tired of losing an afternoon to it.</p>
         <p>It is early, and it is honest about being early. If you use it during the beta and something is wrong or missing, you will be telling the person who wrote it, and it will probably change that week.</p>
-        <p style="color:var(--dim);font-size:.92rem">Based in Melbourne, working across Victoria. Call <a class="tel-link" href="tel:+61400777395">0400 777 395</a> if it is easier than typing.</p>
+        <p style="margin-top:18px"><a class="btn btn-ghost" href="about.html">The longer version</a></p>
+        <p style="color:var(--dim);font-size:.92rem;margin-top:16px">Based in Melbourne, working across Victoria. Call <a class="tel-link" href="tel:+61400777395">0400 777 395</a> if it is easier than typing.</p>
       </div>
     </div>
   </div>
@@ -460,54 +396,13 @@
   </div>
 </section>
 
-<section id="faq" style="padding-top:0">
-  <div class="container" style="max-width:860px">
-    <div class="section-head reveal">
+<section id="faq-pointer" style="padding-top:0">
+  <div class="container" style="max-width:860px;text-align:center">
+    <div class="reveal" style="background:var(--bg1);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px 30px">
       <p class="kicker">Straight answers</p>
-      <h2>Questions we get asked.</h2>
-      <p>If yours is not here, ring us or send an email and we will answer it properly.</p>
-    </div>
-    <div class="faq-list reveal">
-      <details class="faq-item">
-        <summary>Does it work when there is no phone signal?</summary>
-        <div class="answer"><p>Yes, and this is the part people test first. Every entry saves to a queue on the phone the moment you tap save, photos included. You can assess an entire site in flight mode. When you drive back into range the queue empties into your SharePoint site by itself, and the project list shows you what has gone and what is still waiting.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>How accurate is the GPS under a canopy?</summary>
-        <div class="answer"><p>As accurate as the phone in your hand, which under dense canopy usually means a few metres rather than a few centimetres. It is good enough to tell four trees apart on a plan and to prove where a photo was taken. It is not survey grade and we will not pretend otherwise. If you need survey accuracy you should be picking up coordinates with survey equipment and TIMBR will happily sit alongside that.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Where is my data stored?</summary>
-        <div class="answer"><p>In your own Microsoft 365 tenant, as SharePoint lists and files. There is no TIMBR database holding your projects. Your permissions, retention rules and backups apply to it exactly the way they apply to everything else you keep in SharePoint.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What happens to my data if I stop using TIMBR?</summary>
-        <div class="answer"><p>Nothing happens to it. It is already in your tenant in standard formats, so you keep every assessment, every photo and every report right where they sit. There is no export to request, no migration project and nothing for us to hold onto.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Does it calculate the NRZ and SRZ?</summary>
-        <div class="answer"><p>Yes. It shows the reference Notional Root Zone and Structural Root Zone worked out from the trunk diameter measurements you enter, using the method in AS 4970:2025. If you learned this standard before the 2025 revision, the NRZ is the figure you knew as the TPZ.</p><p>They are labelled as reference figures on purpose. The app does arithmetic, it does not do professional judgement. Under the 2025 standard the Tree Protection Zone is the area actually protected on site, which the project arborist sets after looking at the tree and the ground, and where the notional figure is not the right answer that is still your call to make and justify. You can <a href="calculator.html">try the same calculation in your browser</a>.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Do I need Microsoft 365?</summary>
-        <div class="answer"><p>Yes. TIMBR Field signs in with your Microsoft 365 accounts and writes into your SharePoint site. If your consultancy already runs on Microsoft 365, and most do, setup takes minutes and your IT people have nothing new to assess. If you are not on Microsoft 365 then this is not the right tool for you yet.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Can I get the data into CAD or a spreadsheet?</summary>
-        <div class="answer"><p>Yes. Because the records are SharePoint lists you can open them in Excel whenever you like. TIMBR Hub and the QGIS plugin read the same data for plans and reports. If your drafting still happens in a CAD package you are happy with, keep using it. We are trying to fix the front half of the job, not force you to replace the back half.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Does it work on my own phone?</summary>
-        <div class="answer"><p>It runs on iOS and Android, so yes, on the phone you already carry. There is no proprietary hardware and nothing to buy.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What does it cost?</summary>
-        <div class="answer"><p>Pricing is not settled while we are in private beta, and we would rather say that than publish a number we then change. Consultancies in the beta will see pricing before anything is ever charged, and will keep beta pricing for the first twelve months after launch. It will be in Australian dollars.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>How long does the beta run and what do I actually get?</summary>
-        <div class="answer"><p>The beta is capped at ten consultancies and there are five places left. You get help setting it up against your own tenant, a walk through with an arborist rather than a support script, and a direct line to the person writing the code. In return we want to hear what is broken and what is missing.</p><p>We keep the number low because the onboarding is done personally, not because we are pretending to be exclusive. If that sounds like more involvement than you want right now, say so in the form and we will tell you when it opens up properly instead.</p></div>
-      </details>
+      <h2 style="margin-bottom:12px">Questions we get asked</h2>
+      <p style="color:var(--muted);max-width:56ch;margin:0 auto 20px">Whether it works with no signal, where your data is stored, how it handles multi stemmed trees, what happens if you stop using it, and what it costs.</p>
+      <a class="btn btn-ghost" href="faq.html">Read the FAQ</a>
     </div>
   </div>
 </section>
@@ -585,20 +480,26 @@
       <div class="foot-col">
         <h4>Product</h4>
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="calculator.html">AS 4970 calculator</a></li>
-          <li><a href="resources.html">Free tools and guides</a></li>
-          <li><a href="#ownership">Your data</a></li>
-          <li><a href="#suite">TIMBR Hub</a></li>
-          <li><a href="#suite">QGIS plugin</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="data-ownership.html">Your data</a></li>
+          <li><a href="suite.html">The suite</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Free tools</h4>
+        <ul>
+          <li><a href="calculator.html">NRZ and SRZ calculator</a></li>
+          <li><a href="as-4970-2025.html">AS 4970:2025 changes</a></li>
+          <li><a href="measuring-dsh.html">Measuring DSH</a></li>
+          <li><a href="resources.html">All resources</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#about">Who built it</a></li>
-          <li><a href="#councils">For councils</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="for-councils.html">For councils</a></li>
           <li><a href="#beta">Join the beta</a></li>
           <li><a href="mailto:hello@timbrfield.com.au">Contact</a></li>
         </ul>
