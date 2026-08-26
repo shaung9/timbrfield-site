@@ -77,6 +77,21 @@
 .unit button[aria-pressed="true"]{background:var(--leaf);color:#0B1510}
 .unit button + button{border-left:1px solid var(--line-strong)}
 
+.mode-row{display:flex;gap:8px;margin-bottom:10px;align-items:stretch}
+.mode{display:flex;gap:6px;flex:1;min-width:0}
+.mode-row .unit{flex:none}
+.mode button{flex:1;background:var(--bg2);border:1px solid var(--line-strong);border-radius:9px;color:var(--muted);font-family:inherit;font-size:.83rem;font-weight:600;padding:8px 10px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.mode button[aria-pressed="true"]{background:rgba(143,190,124,.14);border-color:rgba(143,190,124,.5);color:var(--leaf)}
+.stems{display:grid;gap:8px}
+.stem-row{display:flex;gap:8px;align-items:center}
+.stem-row .n{font-size:.8rem;color:var(--dim);width:52px;flex:none}
+.stem-row input{flex:1;min-width:0}
+.stem-row button{flex:none;background:var(--bg2);border:1px solid var(--line-strong);border-radius:9px;color:var(--muted);width:38px;height:100%;min-height:44px;cursor:pointer;font-size:1.1rem;line-height:1}
+.stem-row button:hover{border-color:#C08A7A;color:#D79683}
+.add-stem{margin-top:4px;background:none;border:1px dashed var(--line-strong);border-radius:9px;color:var(--leaf);font-family:inherit;font-size:.85rem;font-weight:600;padding:9px;cursor:pointer;width:100%}
+.add-stem:hover{border-color:var(--leaf)}
+.combined{margin-top:10px;background:rgba(143,190,124,.08);border:1px solid rgba(143,190,124,.3);border-radius:9px;padding:10px 13px;font-size:.85rem;color:#CBDCC4}
+.combined b{font-variant-numeric:tabular-nums}
 .results{display:grid;gap:14px}
 .res{background:var(--bg1);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
 .res.lead{border-color:rgba(143,190,124,.45);background:linear-gradient(160deg,var(--panel2),var(--bg1))}
@@ -163,14 +178,26 @@
 
       <div class="field">
         <label for="dsh">Diameter at Standard Height (DSH)
-          <span class="sub">Trunk diameter measured 1.4 m above ground. Formerly called DBH.</span>
+          <span class="sub">Measured 1.4 m above natural ground level, on the high side if the ground slopes. Formerly called DBH.</span>
         </label>
-        <div class="input-row">
-          <input type="number" id="dsh" min="0" step="any" inputmode="decimal" placeholder="e.g. 120">
+        <div class="mode-row">
+          <div class="mode" role="group" aria-label="Stem count">
+            <button type="button" id="m-single" aria-pressed="true">Single stem</button>
+            <button type="button" id="m-multi" aria-pressed="false">Multiple stems</button>
+          </div>
           <div class="unit" role="group" aria-label="DSH units">
             <button type="button" id="dsh-cm" aria-pressed="true">cm</button>
             <button type="button" id="dsh-mm" aria-pressed="false">mm</button>
           </div>
+        </div>
+        <div id="single-wrap">
+          <input type="number" id="dsh" min="0" step="any" inputmode="decimal" placeholder="e.g. 120">
+        </div>
+        <div id="multi-wrap" hidden>
+          <p class="sub" style="margin:0 0 9px">Measure each stem at 1.4 m and enter them separately. The standard combines them as the square root of the sum of the squares, which is not the same as adding them up.</p>
+          <div class="stems" id="stems"></div>
+          <button type="button" class="add-stem" id="add-stem">+ Add another stem</button>
+          <div class="combined" id="combined" hidden></div>
         </div>
       </div>
 
@@ -248,7 +275,7 @@
         <h3 style="font-size:.95rem;margin-bottom:6px">How these are worked out</h3>
         <div class="formula">NRZ radius (m) = DSH (mm) &times; 0.012 &nbsp;&nbsp;[min 2 m, max 15 m]&nbsp;&nbsp;<span style="color:var(--dim)">AS 4970:2025 cl. 3.2</span></div>
         <div class="formula">SRZ radius (m) = ((D &times; 50) ^ 0.42) &times; 0.64 &nbsp;&nbsp;[min 1.5 m]&nbsp;&nbsp;<span style="color:var(--dim)">AS 4970:2025 cl. 3.4</span></div>
-        <p style="margin-top:12px"><a href="as-4970-2025.html" style="font-weight:600">Read what changed in AS 4970:2025</a></p>
+        <p style="margin-top:12px"><a href="as-4970-2025.html" style="font-weight:600">Read what changed in AS 4970:2025</a> &nbsp;&middot;&nbsp; <a href="measuring-dsh.html" style="font-weight:600">How to measure DSH properly</a></p>
         <p style="color:var(--dim);font-size:.85rem;margin-top:10px">D is the trunk diameter above the root buttress, in metres. Encroachment is measured as a percentage of the NRZ area, not its radius, which is why a small looking incursion at the edge can still come out under ten percent.</p>
       </div>
     </div>
@@ -305,7 +332,7 @@
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <a class="btn btn-primary" href="index.html#beta" style="text-align:center">Join the private beta</a>
-      <a class="btn btn-ghost" href="index.html" style="text-align:center">See what TIMBR Field does</a>
+      <a class="btn btn-ghost" href="resources.html" style="text-align:center">More free tools and guides</a>
       <p style="color:var(--dim);font-size:.84rem;text-align:center;margin-top:2px">Five places left in the current intake</p>
     </div>
   </div>
@@ -340,8 +367,74 @@
   function toMm(val, unit) { return unit === 'cm' ? val * 10 : val; }
   function fmt(n, dp) { return n.toFixed(dp === undefined ? 2 : dp); }
 
+  // ---- single / multi stem mode ----
+  var multi = false;
+  function setMode(isMulti) {
+    multi = isMulti;
+    document.getElementById('m-single').setAttribute('aria-pressed', String(!isMulti));
+    document.getElementById('m-multi').setAttribute('aria-pressed', String(isMulti));
+    document.getElementById('single-wrap').hidden = isMulti;
+    document.getElementById('multi-wrap').hidden = !isMulti;
+    if (isMulti && document.querySelectorAll('.stem-row').length === 0) { addStem(); addStem(); }
+    calc();
+  }
+  document.getElementById('m-single').addEventListener('click', function () { setMode(false); });
+  document.getElementById('m-multi').addEventListener('click', function () { setMode(true); });
+
+  function renumber() {
+    var rows = document.querySelectorAll('.stem-row');
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].querySelector('.n').textContent = 'Stem ' + (i + 1);
+      var rm = rows[i].querySelector('button');
+      rm.disabled = rows.length <= 2;
+      rm.style.opacity = rows.length <= 2 ? '.35' : '1';
+    }
+  }
+  function addStem(value) {
+    var wrap = document.getElementById('stems');
+    var row = document.createElement('div');
+    row.className = 'stem-row';
+    var label = document.createElement('span');
+    label.className = 'n';
+    var inp = document.createElement('input');
+    inp.type = 'number'; inp.min = '0'; inp.step = 'any';
+    inp.inputMode = 'decimal'; inp.placeholder = 'diameter';
+    inp.setAttribute('aria-label', 'Stem diameter');
+    if (value) inp.value = value;
+    inp.addEventListener('input', calc);
+    var rm = document.createElement('button');
+    rm.type = 'button'; rm.textContent = '\u00D7';
+    rm.setAttribute('aria-label', 'Remove this stem');
+    rm.addEventListener('click', function () {
+      if (document.querySelectorAll('.stem-row').length <= 2) return;
+      row.remove(); renumber(); calc();
+    });
+    row.appendChild(label); row.appendChild(inp); row.appendChild(rm);
+    wrap.appendChild(row);
+    renumber();
+  }
+  document.getElementById('add-stem').addEventListener('click', function () { addStem(); });
+
+  // combined DSH = sqrt(sum of squares), per AS 4970 for multi stemmed trees
+  function combinedDsh() {
+    var vals = [];
+    document.querySelectorAll('.stem-row input').forEach(function (i) {
+      var v = parseFloat(i.value);
+      if (isFinite(v) && v > 0) vals.push(v);
+    });
+    var box = document.getElementById('combined');
+    if (vals.length < 2) { box.hidden = true; return vals.length === 1 ? vals[0] : NaN; }
+    var sumSq = vals.reduce(function (a, v) { return a + v * v; }, 0);
+    var comb = Math.sqrt(sumSq);
+    box.hidden = false;
+    box.innerHTML = 'Combined DSH: <b>' + fmt(comb) + ' ' + units.dsh + '</b> from ' + vals.length +
+      ' stems. Adding them would have given ' + fmt(vals.reduce(function (a, v) { return a + v; }, 0)) +
+      ' ' + units.dsh + ', which would overstate the zone.';
+    return comb;
+  }
+
   function calc() {
-    var dshRaw = parseFloat(document.getElementById('dsh').value);
+    var dshRaw = multi ? combinedDsh() : parseFloat(document.getElementById('dsh').value);
     var dabRaw = parseFloat(document.getElementById('dab').value);
     var encRaw = parseFloat(document.getElementById('enc').value);
     var srzHit = document.getElementById('srz-hit').checked;
