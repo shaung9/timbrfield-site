@@ -84,23 +84,28 @@
       <svg viewBox="0 0 100 100" role="img" aria-hidden="true"><path d="M10 50 A40 40 0 0 1 90 50" fill="none" stroke="#F2EFE2" stroke-width="4.9" stroke-linecap="round"/><path d="M50 22.1 A26.9 26.9 0 0 1 50 75.9" fill="none" stroke="#8FBE7C" stroke-width="4.9" stroke-linecap="round"/><path d="M50 29.4 C54.5 35 57.4 41 57.4 46.6 C57.4 54 54.5 62 50 68.6 C45.5 62 42.6 54 42.6 46.6 C42.6 41 45.5 35 50 29.4 Z" fill="#8FBE7C"/></svg>
       <span class="brand-name">TIMBR <span>Field</span></span>
     </a>
-    <nav aria-label="Main navigation">
-      <ul class="nav-links" id="nav-links">
+
+    <input type="checkbox" id="nav-switch" class="nav-switch" hidden>
+    <label for="nav-switch" class="nav-toggle" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path class="bars" d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="cross" d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </label>
+
+    <nav class="nav-main" aria-label="Main">
+      <ul class="nav-links">
         <li><a href="index.html">Overview</a></li>
         <li><a href="features.html" aria-current="page">Features</a></li>
         <li><a href="data-ownership.html">Your data</a></li>
         <li><a href="for-councils.html">Councils</a></li>
         <li><a href="suite.html">The suite</a></li>
         <li><a href="resources.html">Resources</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
     </nav>
-    <div style="display:flex;gap:12px;align-items:center">
+
+    <div class="nav-cta">
       <a class="btn btn-primary" href="index.html#beta">Join the beta</a>
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
     </div>
   </div>
 </header>
@@ -243,15 +248,10 @@
       </div>
     </div>
     <div class="foot-base">
-      <span>&copy; <span id="year">2026</span> SG Arboricultural Consulting. All rights reserved.</span>
+      <span>&copy; 2026 SG Arboricultural Consulting. All rights reserved.</span>
       <span>TIMBR Field is in private beta.</span>
     </div>
   </div>
 </footer>
-<script>
-var tgl=document.getElementById('nav-toggle'),links=document.getElementById('nav-links');
-tgl.addEventListener('click',function(){var o=links.classList.toggle('open');tgl.setAttribute('aria-expanded',o);});
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
 </body>
 </html>
