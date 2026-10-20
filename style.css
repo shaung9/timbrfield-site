@@ -303,7 +303,7 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
 .toc ol{margin:0 0 0 18px;display:grid;gap:7px;color:var(--muted);font-size:.94rem}
 .pullquote{border-left:3px solid var(--leaf);padding:4px 0 4px 22px;margin:26px 0;font-size:1.1rem;line-height:1.55;color:#CBDCC4}
 .art-table{overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg1)}
-.art-table table{border-collapse:collapse;width:100%;min-width:520px;font-size:.93rem}
+.art-table table{border-collapse:collapse;width:100%;font-size:.93rem}
 .art-table th,.art-table td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 .art-table thead th{background:var(--bg2);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .art-table tbody tr:last-child td{border-bottom:none}
@@ -318,3 +318,16 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
 .checklist{list-style:none;margin-left:0!important}
 .checklist li{display:flex;gap:11px;align-items:flex-start}
 .checklist li svg{flex:none;margin-top:5px}
+/* phones: no input zoom on iOS; stacked article tables */
+@media (max-width:640px){
+  input,select,textarea{font-size:16px}
+  .art-table th,.art-table td{padding:11px 12px;font-size:.9rem}
+  .art-table table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .art-table table.stack,.art-table table.stack tbody,.art-table table.stack tr,.art-table table.stack td{display:block;width:100%}
+  .art-table table.stack tr{border-bottom:1px solid var(--line);padding:8px 0}
+  .art-table table.stack tr:last-child{border-bottom:none}
+  .art-table table.stack td{border-bottom:none;padding:6px 16px;white-space:normal}
+  .art-table table.stack td::before{content:attr(data-label);display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
+  .art-table table.stack td:first-child::before{display:none}
+  .art-table table.stack td:first-child{font-size:1rem;padding-top:12px}
+}
