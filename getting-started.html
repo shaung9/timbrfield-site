@@ -35,7 +35,7 @@
   "step": [
     { "@type": "HowToStep", "name": "Create a dedicated SharePoint site", "text": "In the SharePoint admin centre: Sites, Active sites, Create, Team site. Name it TIMBR, make the person who will connect first the owner, set it to Private. Not the root site and not an existing team site." },
     { "@type": "HowToStep", "name": "Give your people access to that site", "text": "Add everyone who will use TIMBR as members of the site. Make the person who will connect first an owner." },
-    { "@type": "HowToStep", "name": "Consent to the app", "text": "A Global Administrator consents for the organisation, at the first sign-in or in Entra under Enterprise applications. The consent screen lists exactly User.Read and Sites.Selected." },
+    { "@type": "HowToStep", "name": "Consent to the app", "text": "A Global Administrator consents for the organisation, at the first sign-in or in Entra under Enterprise applications. The consent screen lists exactly User.Read, Sites.Selected and offline_access." },
     { "@type": "HowToStep", "name": "Grant the app that one site", "text": "With PnP PowerShell, grant the TIMBR app Manage on the TIMBR site only, and check with Get-PnPAzureADAppSitePermission." },
     { "@type": "HowToStep", "name": "Start the free trial", "text": "In TIMBR Hub, sign in, open Account, type your company name and press Start a free trial. The trial begins at once for the whole organisation." },
     { "@type": "HowToStep", "name": "Connect and create the lists", "text": "In TIMBR Hub: Deployment, paste the site address, Connect Microsoft 365, sign in, Provision SharePoint Lists." },
@@ -180,15 +180,16 @@
 
       <div class="pg-sec" id="step-3">
         <h2>Step 3. Consent to the TIMBR app</h2>
-        <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. TIMBR asks for two delegated permissions and nothing else:</p>
+        <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. The prompt is headed <em>Permissions requested</em>, names <strong>TIMBR</strong>, published by SG Arboricultural Consulting, and lists three things:</p>
         <div class="art-table"><table><tbody>
-          <tr><td><code>User.Read</code></td><td>Shown as <em>Sign you in and read your profile</em>. Lets TIMBR know who is signed in and show their name.</td></tr>
-          <tr><td><code>Sites.Selected</code></td><td>Shown as <em>Access selected site collections</em>. Lets TIMBR reach only the SharePoint sites an administrator has explicitly granted it, which after step 4 is the one TIMBR site.</td></tr>
+          <tr><td><em>Sign in and read user profile</em></td><td><code>User.Read</code>. Lets TIMBR know who is signed in and show their name.</td></tr>
+          <tr><td><em>Access selected Sites, on behalf of the signed-in user</em></td><td><code>Sites.Selected</code>. Lets TIMBR reach only the SharePoint sites an administrator has explicitly granted it, which after step 4 is the one TIMBR site.</td></tr>
+          <tr><td><em>Maintain access to data you have given it access to</em></td><td><code>offline_access</code>. Microsoft's standard permission for staying signed in on a phone without typing a password every hour. It grants nothing new; it only lets the two above keep working between sign-ins.</td></tr>
         </tbody></table></div>
         <p>There are two ways to give that consent. Either is fine; do one.</p>
         <p><strong>At the first sign-in.</strong> A Global Administrator installs the Hub (<a href="download.html">Download</a>), opens <strong>Deployment</strong>, pastes the site address from step 1 and presses <strong>Connect Microsoft 365</strong>. Microsoft's page opens and shows <em>Permissions requested</em>, with the two items above. Tick <strong>Consent on behalf of your organisation</strong>, then press <strong>Accept</strong>. Done; the administrator carries straight on to step 5.</p>
         <p><strong>In the Entra admin centre.</strong> Go to <a href="https://entra.microsoft.com" rel="noopener">entra.microsoft.com</a> &rsaquo; <strong>Identity</strong> &rsaquo; <strong>Applications</strong> &rsaquo; <strong>Enterprise applications</strong>, find <strong>TIMBR</strong> (it appears in the list once anyone in your tenant has tried to sign in to it once), open it, choose <strong>Permissions</strong> in its left menu and press <strong>Grant admin consent for <em>your organisation</em></strong>. Sign in when asked and accept.</p>
-        <div class="note"><p>Whichever way, the consent screen must list exactly the two permissions above. If it lists anything else, stop and <a href="mailto:hello@timbrfield.com.au">tell us</a> before accepting.</p></div>
+        <div class="note"><p>Whichever way, the prompt must list exactly the three items above. If it lists anything else, such as <em>Read directory data</em>, stop and <a href="mailto:hello@timbrfield.com.au">tell us</a> before accepting.</p></div>
         <p>If a person who is not an administrator signs in first, Microsoft shows <em>Need admin approval</em> instead. Nothing is wrong: they can type a note and press <em>Request approval</em>, or an administrator does one of the two things above and the person signs in again.</p>
         <p>App registration, for your records: <code>63686792-1aa5-4dc4-9d27-2b2a215a7376</code>, published by SG Arboricultural Consulting. There are no application permissions, no client secrets and no certificates: TIMBR can do nothing while nobody is signed in, and every action appears in your sign-in logs as a named person.</p>
       </div>
@@ -279,7 +280,7 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary>Can it read our other SharePoint sites, OneDrive, mail or directory?</summary>
-            <div class="answer"><p>No. It asks for <code>Sites.Selected</code> and <code>User.Read</code> only, and <code>Sites.Selected</code> reaches only sites explicitly granted. TIMBR connects only to the site address it is given; it never searches for sites or falls back to any other site.</p></div>
+            <div class="answer"><p>No. It asks for <code>Sites.Selected</code>, <code>User.Read</code> and the standard <code>offline_access</code> only, and <code>Sites.Selected</code> reaches only sites explicitly granted. TIMBR connects only to the site address it is given; it never searches for sites or falls back to any other site.</p></div>
           </details>
           <details class="faq-item">
             <summary>Can it do anything when nobody is signed in?</summary>
