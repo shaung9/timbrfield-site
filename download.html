@@ -124,9 +124,20 @@
         <p>The Hub checks for a newer build when it opens and says so beside its build number; <strong>Settings &rsaquo; Check for updates</strong> does the same on demand, and <strong>Update now</strong> downloads it, swaps it in and reopens. Every release is listed, with what changed, on the <a href="https://github.com/shaung9/timbrfield-site/releases">releases page</a>. The build number you see in the Hub is the release's name, so the two are easy to match up.</p>
       </div>
 
+      <div class="pg-sec" id="qgis">
+        <h2>TIMBR QGIS plugin</h2>
+        <p>The consulting side's drawing tools: plan import, site plans and the AS 4970 impact assessment report, inside QGIS, reading the trees your people captured in Field. It needs <strong>QGIS 3.44 LTR</strong>, the current long-term release from <a href="https://qgis.org/download/" rel="noopener">qgis.org</a>, on Mac or Windows. The plugin's protected runtime is built for the Python that 3.44 ships, so an older QGIS will not load it.</p>
+        <p>Two ways to install it, same build either way:</p>
+        <ul>
+          <li><strong>From the Hub.</strong> TIMBR Hub &rsaquo; <strong>Settings</strong> &rsaquo; <strong>Install the plugin into QGIS</strong>. The Hub copies the plugin into your QGIS profile and switches it on. Restart QGIS. Press it again after a Hub update to bring the plugin up to date.</li>
+          <li><strong>From the zip.</strong> <a href="https://github.com/shaung9/timbrfield-site/releases/latest/download/TIMBR-QGIS-Plugin.zip" rel="noopener">Download TIMBR-QGIS-Plugin.zip</a>, then in QGIS: <strong>Plugins</strong> &rsaquo; <strong>Manage and Install Plugins</strong> &rsaquo; <strong>Install from ZIP</strong> &rsaquo; choose the file &rsaquo; <strong>Install Plugin</strong>. Restart QGIS.</li>
+        </ul>
+        <p>First use: the TIMBR toolbar's <strong>Sign in</strong> shows a short code and opens Microsoft's sign-in page; sign in with your own Microsoft 365 account and enter the code. The plugin then reaches the same TIMBR site as the Hub and Field, and no other. Your administrator consents to it and grants it the site in <a href="getting-started.html#step-3">steps 3 and 4 of Getting started</a>; the licence is the organisation's, the same one the Hub shows.</p>
+      </div>
+
       <div class="pg-sec">
-        <h2>The rest of the suite</h2>
-        <p><strong>TIMBR Field</strong>, the phone app, is in open beta on iPhone and iPad: <a href="https://testflight.apple.com/join/ywsVUtSM" rel="noopener">install it through TestFlight</a> (Apple's TestFlight app installs first if you don't have it). On Android it is installed through Google Play testing during the beta; <a href="/#beta">apply for the beta</a> and the invitation comes with it. <strong>The QGIS plugin</strong> is installed from the Hub itself (Deployment &rsaquo; Sync plugin), which puts the right build into your QGIS profile.</p>
+        <h2>TIMBR Field</h2>
+        <p>The phone app is in open beta on iPhone and iPad: <a href="https://testflight.apple.com/join/ywsVUtSM" rel="noopener">install it through TestFlight</a> (Apple's TestFlight app installs first if you don't have it). On Android it is installed through Google Play testing during the beta; <a href="/#beta">apply for the beta</a> and the invitation comes with it.</p>
       </div>
 
     </div>
