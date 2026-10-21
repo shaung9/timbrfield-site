@@ -180,7 +180,11 @@
 
       <div class="pg-sec" id="step-3">
         <h2>Step 3. Consent to the TIMBR app</h2>
-        <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. The prompt is headed <em>Permissions requested</em>, names <strong>TIMBR</strong>, published by SG Arboricultural Consulting, and lists three things:</p>
+        <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. The prompt is headed <em>Permissions requested</em>, names <strong>TIMBR</strong>, and lists three things:</p>
+        <figure style="max-width:460px">
+          <img src="img/setup-consent.webp" alt="Microsoft's Permissions requested prompt for TIMBR, listing Maintain access to data you have given it access to, Access selected Sites on behalf of the signed-in user, and Sign in and read user profile, with Cancel and Accept buttons" width="900" height="1275" loading="lazy" decoding="async">
+          <figcaption>The prompt, as a Global Administrator sees it. The <em>terms of service</em> and <em>privacy statement</em> links on it go to this website.</figcaption>
+        </figure>
         <div class="art-table"><table><tbody>
           <tr><td><em>Sign in and read user profile</em></td><td><code>User.Read</code>. Lets TIMBR know who is signed in and show their name.</td></tr>
           <tr><td><em>Access selected Sites, on behalf of the signed-in user</em></td><td><code>Sites.Selected</code>. Lets TIMBR reach only the SharePoint sites an administrator has explicitly granted it, which after step 4 is the one TIMBR site.</td></tr>
@@ -190,6 +194,7 @@
         <p><strong>At the first sign-in.</strong> A Global Administrator installs the Hub (<a href="download.html">Download</a>), opens <strong>Deployment</strong>, pastes the site address from step 1 and presses <strong>Connect Microsoft 365</strong>. Microsoft's page opens and shows <em>Permissions requested</em>, with the two items above. Tick <strong>Consent on behalf of your organisation</strong>, then press <strong>Accept</strong>. Done; the administrator carries straight on to step 5.</p>
         <p><strong>In the Entra admin centre.</strong> Go to <a href="https://entra.microsoft.com" rel="noopener">entra.microsoft.com</a> &rsaquo; <strong>Identity</strong> &rsaquo; <strong>Applications</strong> &rsaquo; <strong>Enterprise applications</strong>, find <strong>TIMBR</strong> (it appears in the list once anyone in your tenant has tried to sign in to it once), open it, choose <strong>Permissions</strong> in its left menu and press <strong>Grant admin consent for <em>your organisation</em></strong>. Sign in when asked and accept.</p>
         <div class="note"><p>Whichever way, the prompt must list exactly the three items above. If it lists anything else, such as <em>Read directory data</em>, stop and <a href="mailto:hello@timbrfield.com.au">tell us</a> before accepting.</p></div>
+        <p>The word <em>unverified</em> under the name means TIMBR has no Microsoft Partner Center badge, which is a partner-programme enrolment rather than a security check. The publisher is SG Arboricultural Consulting; the app registration ID below is how you confirm it.</p>
         <p>If a person who is not an administrator signs in first, Microsoft shows <em>Need admin approval</em> instead. Nothing is wrong: they can type a note and press <em>Request approval</em>, or an administrator does one of the two things above and the person signs in again.</p>
         <p>App registration, for your records: <code>63686792-1aa5-4dc4-9d27-2b2a215a7376</code>, published by SG Arboricultural Consulting. There are no application permissions, no client secrets and no certificates: TIMBR can do nothing while nobody is signed in, and every action appears in your sign-in logs as a named person.</p>
       </div>
