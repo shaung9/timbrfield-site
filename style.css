@@ -331,3 +331,13 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
   .art-table table.stack td:first-child::before{display:none}
   .art-table table.stack td:first-child{font-size:1rem;padding-top:12px}
 }
+
+/* Set-up guide screenshots */
+.art-body figure{margin:18px 0 28px}
+.art-body figure img{border:1px solid var(--line);border-radius:10px;width:100%}
+.art-body figcaption{font-size:.86rem;color:var(--dim);margin-top:8px;line-height:1.5}
+.art-body .steps{counter-reset:none}
+.art-body ol.steps li{padding-left:4px}
+.art-body .note{border-left:3px solid var(--leaf);padding:10px 14px;background:var(--bg2);border-radius:0 8px 8px 0;margin:0 0 18px}
+.art-body .note p{margin:0;color:var(--text)}
+.art-table td:first-child{white-space:nowrap;color:var(--text)}

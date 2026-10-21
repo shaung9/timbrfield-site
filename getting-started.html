@@ -31,14 +31,15 @@
   "@type": "HowTo",
   "name": "Set up TIMBR for your organisation",
   "description": "Create a dedicated SharePoint site, add your people, consent to the app, grant it that one site, start the licence, and connect the Hub to create its lists.",
-  "totalTime": "PT30M",
+  "totalTime": "PT45M",
   "step": [
-    { "@type": "HowToStep", "name": "Create a dedicated SharePoint site", "text": "A new, private Team site, for example https://yourtenant.sharepoint.com/sites/TIMBR. Not the root site and not an existing team site." },
+    { "@type": "HowToStep", "name": "Create a dedicated SharePoint site", "text": "In the SharePoint admin centre: Sites, Active sites, Create, Team site. Name it TIMBR, make the person who will connect first the owner, set it to Private. Not the root site and not an existing team site." },
     { "@type": "HowToStep", "name": "Give your people access to that site", "text": "Add everyone who will use TIMBR as members of the site. Make the person who will connect first an owner." },
-    { "@type": "HowToStep", "name": "Consent to the app", "text": "A Global Administrator consents for the organisation. The consent screen lists exactly User.Read and Sites.Selected." },
-    { "@type": "HowToStep", "name": "Grant the app that one site", "text": "With PnP PowerShell, grant the TIMBR app Manage on the TIMBR site only." },
-    { "@type": "HowToStep", "name": "Start the free trial", "text": "In TIMBR Hub, sign in, open Licence, type your company name and press Start a free trial. The trial begins at once for the whole organisation." },
-    { "@type": "HowToStep", "name": "Connect and create the lists", "text": "In TIMBR Hub: Deployment, paste the site address, Connect, sign in, Provision SharePoint Lists." }
+    { "@type": "HowToStep", "name": "Consent to the app", "text": "A Global Administrator consents for the organisation, at the first sign-in or in Entra under Enterprise applications. The consent screen lists exactly User.Read and Sites.Selected." },
+    { "@type": "HowToStep", "name": "Grant the app that one site", "text": "With PnP PowerShell, grant the TIMBR app Manage on the TIMBR site only, and check with Get-PnPAzureADAppSitePermission." },
+    { "@type": "HowToStep", "name": "Start the free trial", "text": "In TIMBR Hub, sign in, open Account, type your company name and press Start a free trial. The trial begins at once for the whole organisation." },
+    { "@type": "HowToStep", "name": "Connect and create the lists", "text": "In TIMBR Hub: Deployment, paste the site address, Connect Microsoft 365, sign in, Provision SharePoint Lists." },
+    { "@type": "HowToStep", "name": "Each person installs and signs in", "text": "Hub on Mac or Windows, Field on iPhone, iPad or Android; each pastes the same site address and signs in with their own Microsoft 365 account." }
   ]
 }
 </script>
@@ -98,52 +99,148 @@
       </div>
 
       <div class="pg-sec">
+        <h2>Before you start</h2>
+        <p><strong>Who does this:</strong> someone who is a <strong>Global Administrator</strong> in Microsoft 365 (for step 3) and a <strong>SharePoint Administrator</strong> (for steps 1 and 4). In most small companies that is one person, often whoever set up Microsoft 365, or the IT provider.</p>
+        <p><strong>What you need to hand:</strong> your tenant name (the part before <code>.sharepoint.com</code> when you open SharePoint), the names of the people who will use TIMBR, and which one of them will connect first. Everyone who uses TIMBR needs a Microsoft 365 licence that includes SharePoint, which every Business and Enterprise plan does.</p>
+        <p><strong>What you end up with:</strong> one private SharePoint site that holds everything TIMBR records, TIMBR allowed into that site and nothing else, your people as members of it, and a trial licence for the organisation. The steps are in the order they have to happen.</p>
+        <ol class="steps">
+          <li><a href="#step-1">Create a dedicated SharePoint site</a></li>
+          <li><a href="#step-2">Give your people access to it</a></li>
+          <li><a href="#step-3">Consent to the TIMBR app</a></li>
+          <li><a href="#step-4">Grant the app that one site</a></li>
+          <li><a href="#step-5">Start the free trial</a></li>
+          <li><a href="#step-6">Connect and create the lists</a></li>
+          <li><a href="#step-7">Each person installs and signs in</a></li>
+        </ol>
+      </div>
+
+      <div class="pg-sec" id="step-1">
         <h2>Step 1. Create a dedicated SharePoint site</h2>
-        <p>A new, empty <strong>Team site</strong>, set to <strong>Private</strong>, for example <code>https://yourtenant.sharepoint.com/sites/TIMBR</code> (SharePoint admin centre &rsaquo; Sites &rsaquo; Active sites &rsaquo; Create &rsaquo; Team site).</p>
-        <p><strong>Not the tenant's main (root) site, and not an existing team site.</strong> A dedicated site is what lets TIMBR be confined to it in step 4, and keeps its lists and photos apart from everything else.</p>
+        <p>TIMBR lives in one SharePoint site of its own. Everything it records, trees, projects, jobs, photos, the crew board, is a list or a library on that site, in your tenant, owned by you.</p>
+        <ol class="steps">
+          <li>Go to <a href="https://admin.microsoft.com" rel="noopener">admin.microsoft.com</a> and sign in as an administrator. In the left menu choose <strong>Show all</strong> &rsaquo; <strong>SharePoint</strong>. That opens the SharePoint admin centre.</li>
+          <li>In its left menu choose <strong>Sites</strong> &rsaquo; <strong>Active sites</strong>, then press <strong>+ Create</strong> at the top.</li>
+          <li>Choose <strong>Team site</strong>. If it asks for a template, choose the <strong>Standard team</strong> template.</li>
+          <li>Fill in the form:
+            <ul>
+              <li><strong>Site name:</strong> <code>TIMBR</code>. The site address fills itself in as <code>/sites/TIMBR</code>; leave it.</li>
+              <li><strong>Group owner:</strong> the person who will connect first and create TIMBR's lists (step 6).</li>
+              <li><strong>Privacy settings:</strong> <strong>Private</strong>. Only people you add can see it.</li>
+              <li><strong>Language</strong> and <strong>time zone</strong>: yours. The language cannot be changed afterwards.</li>
+            </ul>
+          </li>
+          <li>Press <strong>Next</strong>. It offers to add members now; you can do that here or in step 2. Press <strong>Finish</strong>.</li>
+          <li>Open the new site once and copy its address from the browser. It looks like <code>https://yourtenant.sharepoint.com/sites/TIMBR</code>. Keep it: every person pastes this same address into the Hub and the phone app.</li>
+        </ol>
+        <div class="note"><p><strong>Not the tenant's main site, and not an existing team site.</strong> The main site is <code>https://yourtenant.sharepoint.com</code> with nothing after it; an existing site already holds other things. A site of TIMBR's own is what lets step 4 confine TIMBR to it, and keeps its lists and photos apart from everything else you keep in SharePoint.</p></div>
+        <p>Photos taken on site are stored here too. A tree survey of a few hundred trees with photos is a few gigabytes; a new site's default storage is plenty, and it draws on the tenant's pooled storage rather than a fixed quota.</p>
       </div>
 
-      <div class="pg-sec">
+      <div class="pg-sec" id="step-2">
         <h2>Step 2. Give your people access to that site</h2>
-        <p>Add everyone who will use TIMBR as <strong>members</strong> of the site. Make the person who will connect first an <strong>owner</strong>: creating TIMBR's lists on the site (step 6) needs owner rights.</p>
-        <p>TIMBR can only reach what a person can reach, so site membership is how you decide who can use it. A new starter later is just a new member.</p>
+        <p>TIMBR can only reach what the signed-in person can reach, so membership of this site is how you decide who can use TIMBR. There is no separate user list to keep.</p>
+        <ol class="steps">
+          <li>Open the TIMBR site in the browser. Press the <strong>Settings</strong> cog at the top right &rsaquo; <strong>Site permissions</strong> (on some tenants <strong>Site information</strong> &rsaquo; <strong>View all site settings</strong> &rsaquo; <strong>Site permissions</strong>).</li>
+          <li>Press <strong>Add members</strong> &rsaquo; <strong>Add members to group</strong>. Type each person's name and add them. Everyone who will use TIMBR, in the office or in the field, goes in as a <strong>Member</strong>.</li>
+          <li>Make the person who will connect first an <strong>Owner</strong>: next to their name, change <em>Member</em> to <em>Owner</em>. Creating TIMBR's lists on the site (step 6) needs owner rights; using TIMBR afterwards does not.</li>
+        </ol>
+        <p>A new starter later is just a new member of the site; someone who leaves is removed from it, and their access to TIMBR ends with it. If you prefer, make a Microsoft 365 group or security group the member instead and manage people there.</p>
       </div>
 
-      <div class="pg-sec">
-        <h2>Step 3. Consent to the app</h2>
-        <p>A Global Administrator consents for the organisation, either by signing in to TIMBR once and ticking <em>Consent on behalf of your organisation</em>, or in <strong>Entra &rsaquo; Enterprise applications &rsaquo; TIMBR &rsaquo; Permissions &rsaquo; Grant admin consent</strong>.</p>
-        <p>The consent screen should list exactly <code>User.Read</code> and <code>Sites.Selected</code>. If it lists anything else, stop and tell us.</p>
-      </div>
-
-      <div class="pg-sec">
-        <h2>Step 4. Grant the app that one site</h2>
-        <p>With PnP PowerShell, signed in as a SharePoint administrator:</p>
+      <div class="pg-sec" id="step-3">
+        <h2>Step 3. Consent to the TIMBR app</h2>
+        <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. TIMBR asks for two delegated permissions and nothing else:</p>
         <div class="art-table"><table><tbody>
-          <tr><td><code>Connect-PnPOnline -Url "https://yourtenant.sharepoint.com/sites/TIMBR" -Interactive</code></td></tr>
+          <tr><td><code>User.Read</code></td><td>Shown as <em>Sign you in and read your profile</em>. Lets TIMBR know who is signed in and show their name.</td></tr>
+          <tr><td><code>Sites.Selected</code></td><td>Shown as <em>Access selected site collections</em>. Lets TIMBR reach only the SharePoint sites an administrator has explicitly granted it, which after step 4 is the one TIMBR site.</td></tr>
+        </tbody></table></div>
+        <p>There are two ways to give that consent. Either is fine; do one.</p>
+        <p><strong>At the first sign-in.</strong> A Global Administrator installs the Hub (<a href="download.html">Download</a>), opens <strong>Deployment</strong>, pastes the site address from step 1 and presses <strong>Connect Microsoft 365</strong>. Microsoft's page opens and shows <em>Permissions requested</em>, with the two items above. Tick <strong>Consent on behalf of your organisation</strong>, then press <strong>Accept</strong>. Done; the administrator carries straight on to step 5.</p>
+        <p><strong>In the Entra admin centre.</strong> Go to <a href="https://entra.microsoft.com" rel="noopener">entra.microsoft.com</a> &rsaquo; <strong>Identity</strong> &rsaquo; <strong>Applications</strong> &rsaquo; <strong>Enterprise applications</strong>, find <strong>TIMBR</strong> (it appears in the list once anyone in your tenant has tried to sign in to it once), open it, choose <strong>Permissions</strong> in its left menu and press <strong>Grant admin consent for <em>your organisation</em></strong>. Sign in when asked and accept.</p>
+        <div class="note"><p>Whichever way, the consent screen must list exactly the two permissions above. If it lists anything else, stop and <a href="mailto:hello@timbrfield.com.au">tell us</a> before accepting.</p></div>
+        <p>If a person who is not an administrator signs in first, Microsoft shows <em>Need admin approval</em> instead. Nothing is wrong: they can type a note and press <em>Request approval</em>, or an administrator does one of the two things above and the person signs in again.</p>
+        <p>App registration, for your records: <code>63686792-1aa5-4dc4-9d27-2b2a215a7376</code>, published by SG Arboricultural Consulting. There are no application permissions, no client secrets and no certificates: TIMBR can do nothing while nobody is signed in, and every action appears in your sign-in logs as a named person.</p>
+      </div>
+
+      <div class="pg-sec" id="step-4">
+        <h2>Step 4. Grant the app that one site</h2>
+        <p><code>Sites.Selected</code> means TIMBR can reach no site at all until an administrator names one. This step names the TIMBR site, and only it. It is done once, with PnP PowerShell, Microsoft's community-maintained PowerShell module for SharePoint. Allow ten minutes the first time.</p>
+        <p><strong>Install PnP PowerShell</strong> if the computer does not have it. Open PowerShell (on Windows, <strong>PowerShell 7</strong> from the Start menu; on a Mac, install PowerShell from Microsoft, then run <code>pwsh</code> in Terminal) and run:</p>
+        <div class="art-table"><table><tbody>
+          <tr><td><code>Install-Module PnP.PowerShell -Scope CurrentUser</code></td></tr>
+        </tbody></table></div>
+        <p><strong>Register PnP once in your tenant.</strong> PnP PowerShell signs in through an app registration of its own, which a tenant has to have before it can connect. Skip this if your tenant already uses PnP. Run it as a Global Administrator; a browser window opens to consent:</p>
+        <div class="art-table"><table><tbody>
+          <tr><td><code>Register-PnPEntraIDApp -ApplicationName "PnP Management Shell" -Tenant yourtenant.onmicrosoft.com -Interactive</code></td></tr>
+        </tbody></table></div>
+        <p>It prints an application id (a client id). Keep it; the next command uses it.</p>
+        <p><strong>Connect to the TIMBR site</strong> as a SharePoint Administrator, then <strong>grant TIMBR the site</strong>:</p>
+        <div class="art-table"><table><tbody>
+          <tr><td><code>Connect-PnPOnline -Url "https://yourtenant.sharepoint.com/sites/TIMBR" -Interactive -ClientId "&lt;the id Register-PnPEntraIDApp printed&gt;"</code></td></tr>
           <tr><td><code>Grant-PnPAzureADAppSitePermission -AppId "63686792-1aa5-4dc4-9d27-2b2a215a7376" -DisplayName "TIMBR" -Site "https://yourtenant.sharepoint.com/sites/TIMBR" -Permissions Manage</code></td></tr>
         </tbody></table></div>
-        <p><code>Manage</code> rather than <code>Write</code> because TIMBR creates its own lists on first run, which <code>Write</code> does not allow. It applies to this one site only. If PnP PowerShell is not yet set up in the tenant, it needs registering once: <code>Register-PnPEntraIDApp -ApplicationName "PnP Management Shell" -Tenant yourtenant.onmicrosoft.com -Interactive</code>.</p>
+        <p>Replace <code>yourtenant</code> with your tenant name in both places. If your tenant already had PnP set up before 2024, <code>Connect-PnPOnline</code> works without <code>-ClientId</code>.</p>
+        <p><strong>Check it.</strong> Still connected to the TIMBR site:</p>
+        <div class="art-table"><table><tbody>
+          <tr><td><code>Get-PnPAzureADAppSitePermission</code></td></tr>
+        </tbody></table></div>
+        <p>It lists <strong>TIMBR</strong> with <code>Manage</code>. Connect to any <em>other</em> site and run it again: TIMBR is not listed. That is the whole of what TIMBR can reach.</p>
+        <p><strong>Why <code>Manage</code>.</strong> TIMBR creates its own lists and libraries on the site the first time it connects (step 6), and <code>Write</code> does not allow creating lists. <code>Manage</code> is still confined to this one site; it gives TIMBR nothing anywhere else.</p>
+        <p>To take it away later: <code>Revoke-PnPAzureADAppSitePermission</code> on the site, or delete <strong>TIMBR</strong> under Enterprise applications in Entra. Access stops at once and the data stays in your SharePoint.</p>
       </div>
 
-      <div class="pg-sec">
+      <div class="pg-sec" id="step-5">
         <h2>Step 5. Start the free trial</h2>
-        <p>Open TIMBR Hub and sign in with your Microsoft 365 account. The Hub says the organisation has no licence yet and points you to its <strong>Licence</strong> page: type your company's name and press <strong>Start a free trial</strong>. The trial begins at once, covers everyone in the organisation, and the Licence page shows the day it ends. The only things sent are your organisation's tenant ID and the company name you typed. One trial per organisation; when it ends, or to go straight to a subscription, email <a href="mailto:hello@timbrfield.com.au">hello@timbrfield.com.au</a> with the tenant ID the Licence page shows.</p>
+        <p>Open TIMBR Hub and sign in with your Microsoft 365 account (<strong>Deployment</strong> &rsaquo; paste the site address &rsaquo; <strong>Connect Microsoft 365</strong>). Because the organisation has no licence yet, the Hub says so and points you to its <strong>Account</strong> page, under <em>System</em> in the left menu.</p>
+        <figure>
+          <img src="img/setup-account.webp" alt="The Account page of TIMBR Hub: plan, licence and seat tiles across the top, and a Licence card listing who is signed in, the licence key, status and billing" width="1400" height="597" loading="lazy" decoding="async">
+          <figcaption>The Account page. The <em>Licence key</em> line is your organisation's tenant ID. On a new organisation the Licence card carries a <em>Start a free trial</em> box in place of the amber note shown here.</figcaption>
+        </figure>
+        <p>In the <em>Start a free trial</em> box, type your company's name and press <strong>Start a free trial</strong>. The trial begins at once, covers everyone in the organisation, and the <em>Status</em> line shows the day it ends. Then go back to <strong>Deployment</strong> and press <strong>Connect Microsoft 365</strong> again to carry on.</p>
+        <p>The only things sent are your organisation's tenant ID and the company name you typed. One trial per organisation; when it ends, or to go straight to a subscription, email <a href="mailto:hello@timbrfield.com.au">hello@timbrfield.com.au</a> quoting the licence key the Account page shows.</p>
       </div>
 
-      <div class="pg-sec">
+      <div class="pg-sec" id="step-6">
         <h2>Step 6. Connect and create the lists</h2>
-        <p>In TIMBR Hub, as the site owner from step 2: <strong>Deployment</strong> &rsaquo; paste the full site address &rsaquo; <strong>Connect</strong> &rsaquo; sign in &rsaquo; <strong>Provision SharePoint Lists</strong>. This creates TIMBR's lists and libraries on the site. It is safe to run again later; it only ever adds what is missing.</p>
+        <p>Done once, by the site owner from step 2, in TIMBR Hub.</p>
+        <figure>
+          <img src="img/setup-deployment.webp" alt="The Deployment page of TIMBR Hub: a SharePoint site address box with Connect Microsoft 365, Check this site against the schema and Provision SharePoint Lists buttons, and the signed-in account beside it" width="1400" height="467" loading="lazy" decoding="async">
+          <figcaption>Deployment, under <em>System</em>. Paste the full site address from step 1, press <em>Connect Microsoft 365</em>, then <em>Provision SharePoint Lists</em>.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li><strong>Deployment</strong> &rsaquo; paste the full site address into <em>SharePoint site address</em> &rsaquo; <strong>Connect Microsoft 365</strong> &rsaquo; sign in. The right-hand card shows who is signed in; the status line says the site was found.</li>
+          <li>Press <strong>Provision SharePoint Lists</strong>. The Hub creates TIMBR's lists and libraries on the site: a minute or two, with progress shown as it goes. When it finishes, the <strong>Home</strong> page's <em>Getting set up</em> card ticks <em>TIMBR's lists on the site</em>.</li>
+          <li>Add your people under <strong>Organisation</strong> &rsaquo; <strong>Consultants</strong>, so they can be put on projects and jobs. That is the last tick on the Home card, and it disappears.</li>
+        </ol>
+        <p>Provisioning is safe to run again at any time, including after a TIMBR update that adds a list or a column: it only ever adds what is missing and never changes or removes data. <strong>Check this site against the schema</strong> reports what is missing without changing anything.</p>
+      </div>
+
+      <div class="pg-sec" id="step-7">
+        <h2>Step 7. Each person installs and signs in</h2>
+        <p><strong>Hub (Mac or Windows):</strong> <a href="download.html">install</a>, open <strong>Deployment</strong>, paste the same full site address, press <strong>Connect Microsoft 365</strong> and sign in with their own account. The Hub keeps no sign-in between sessions, so Connect is pressed each time it opens. New versions are offered inside the Hub.</p>
+        <p><strong>Field (iPhone, iPad, Android):</strong> on iPhone and iPad install through <a href="https://testflight.apple.com/join/ywsVUtSM" rel="noopener">TestFlight</a>; on Android from the beta invitation. On the sign-in screen enter the same site address under <em>Your TIMBR site</em>, then sign in.</p>
+        <p>Nothing else is set up per person. What they can see and do follows from the site membership in step 2.</p>
       </div>
 
       <div class="pg-sec">
-        <h2>Then, per person</h2>
-        <p><strong>Hub (Mac or Windows):</strong> <a href="download.html">install</a>, open <strong>Deployment</strong>, paste the full site address, press <strong>Connect</strong>, sign in with their own account.</p>
-        <p><strong>Field (iPhone, iPad, Android):</strong> on iPhone and iPad install through <a href="https://testflight.apple.com/join/ywsVUtSM" rel="noopener">TestFlight</a>; on Android from the beta invitation. On the sign-in screen enter the same site address under <em>Your TIMBR site</em>, then sign in.</p>
+        <h2>If something doesn't work</h2>
+        <div class="art-table"><table>
+          <thead><tr><th>What you see</th><th>What it means and what to do</th></tr></thead>
+          <tbody>
+          <tr><td>Site not found</td><td>The address isn't the TIMBR site's full address, or step 4 hasn't been done for it. Open the site in a browser and copy the address from there; make sure it ends in <code>/sites/TIMBR</code> (or whatever you named it), not just <code>.sharepoint.com</code>. Then check step 4's <code>Get-PnPAzureADAppSitePermission</code> on that site lists TIMBR.</td></tr>
+          <tr><td>Access denied, or 403</td><td>Either the person isn't a member of the site (step 2) or the grant in step 4 is missing or on the wrong site. TIMBR can only reach what both the person and the grant allow.</td></tr>
+          <tr><td>Need admin approval</td><td>Step 3 hasn't been done. An administrator consents by either route there; the person then signs in again.</td></tr>
+          <tr><td>Provision fails part-way</td><td>The person connecting isn't an owner of the site (step 2), or the grant is <code>Write</code> rather than <code>Manage</code> (step 4). Fix that and press Provision again; it carries on from what exists.</td></tr>
+          <tr><td>No licence, or the trial button is missing</td><td>The trial button only shows while the licensing service answers that the organisation has none. If the Hub says it couldn't reach the service, check the internet connection and try again. If the organisation already had a trial, email <a href="mailto:hello@timbrfield.com.au">hello@timbrfield.com.au</a> with the licence key.</td></tr>
+          <tr><td>Sign-in blocked by your organisation</td><td>Your Conditional Access policy is applying, as it should. TIMBR signs in through Microsoft's page and honours MFA, device and location rules; allow it the same way as any other app.</td></tr>
+          <tr><td>Asked to sign in every time</td><td>By design. The Hub keeps no token on disk.</td></tr>
+          </tbody>
+        </table></div>
       </div>
 
       <div class="pg-sec">
         <h2>Checking it afterwards</h2>
-        <p>Run <code>Get-PnPAzureADAppSitePermission</code> against any <em>other</em> site: TIMBR should not appear.</p>
+        <p>Three checks, any time: <code>Get-PnPAzureADAppSitePermission</code> against any <em>other</em> site shows no TIMBR; the Entra sign-in logs show TIMBR sign-ins as named people; and the TIMBR site's permissions page lists exactly the people you expect.</p>
       </div>
 
       <div class="pg-sec">
