@@ -341,3 +341,5 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
 .art-body .note{border-left:3px solid var(--leaf);padding:10px 14px;background:var(--bg2);border-radius:0 8px 8px 0;margin:0 0 18px}
 .art-body .note p{margin:0;color:var(--text)}
 .art-table td:first-child{white-space:nowrap;color:var(--text)}
+.art-body .two{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.art-body .two figure{flex:1 1 280px;margin-top:0}
