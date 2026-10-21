@@ -343,3 +343,19 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
 .art-table td:first-child{white-space:nowrap;color:var(--text)}
 .art-body .two{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
 .art-body .two figure{flex:1 1 280px;margin-top:0}
+/* licence cards (home) */
+.lic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:8px}
+.lic-card{display:flex;flex-direction:column;gap:8px;background:var(--bg1);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;color:inherit;text-decoration:none;transition:border-color .16s ease,transform .16s ease}
+.lic-card:hover{border-color:rgba(143,190,124,.55);transform:translateY(-2px);text-decoration:none}
+.lic-card h3{margin:2px 0 0}
+.lic-card p{color:var(--muted);font-size:.95rem;margin:0;flex:1}
+.lic-tag{align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(143,190,124,.14);border:1px solid rgba(143,190,124,.4);color:var(--leaf)}
+.lic-tag.soon{background:rgba(230,200,120,.12);border-color:rgba(230,200,120,.45);color:#E6C878}
+.lic-more{font-weight:600;font-size:.92rem;color:var(--leaf);margin-top:6px}
+@media (max-width:900px){.lic-grid{grid-template-columns:1fr}}
+/* phone: wrap long code */
+@media (max-width:640px){
+  code,.art-table code,.art-body code{white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .art-table td:first-child{white-space:normal}
+  .art-table th,.art-table td{overflow-wrap:anywhere}
+}
