@@ -181,10 +181,16 @@
       <div class="pg-sec" id="step-3">
         <h2>Step 3. Consent to the TIMBR app</h2>
         <p>TIMBR signs people in through Microsoft's own sign-in page, as a registered application. The first time, Microsoft asks an administrator to agree to what the app may do for the organisation. The prompt is headed <em>Permissions requested</em>, names <strong>TIMBR</strong>, and lists three things:</p>
-        <figure style="max-width:460px">
+        <div class="two">
+        <figure>
           <img src="img/setup-consent.webp" alt="Microsoft's Permissions requested prompt for TIMBR, listing Maintain access to data you have given it access to, Access selected Sites on behalf of the signed-in user, and Sign in and read user profile, with Cancel and Accept buttons" width="900" height="1275" loading="lazy" decoding="async">
-          <figcaption>The prompt, as a Global Administrator sees it. The <em>terms of service</em> and <em>privacy statement</em> links on it go to this website.</figcaption>
+          <figcaption>The TIMBR prompt, as a Global Administrator sees it. The <em>terms of service</em> and <em>privacy statement</em> links on it go to this website.</figcaption>
         </figure>
+        <figure>
+          <img src="img/setup-consent-qgis.webp" alt="Microsoft's Permissions requested prompt for TIMBR QGIS, listing the same three items" width="900" height="1274" loading="lazy" decoding="async">
+          <figcaption>The TIMBR QGIS prompt: the same three items for the QGIS plugin's own registration.</figcaption>
+        </figure>
+        </div>
         <div class="art-table"><table><tbody>
           <tr><td><em>Sign in and read user profile</em></td><td><code>User.Read</code>. Lets TIMBR know who is signed in and show their name.</td></tr>
           <tr><td><em>Access selected Sites, on behalf of the signed-in user</em></td><td><code>Sites.Selected</code>. Lets TIMBR reach only the SharePoint sites an administrator has explicitly granted it, which after step 4 is the one TIMBR site.</td></tr>
