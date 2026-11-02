@@ -71,6 +71,10 @@
 .steps li::before{content:counter(s);grid-row:span 2;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(143,190,124,.14);border:1px solid rgba(143,190,124,.4);color:var(--leaf);font-weight:700;font-size:.9rem}
 .steps strong{color:var(--text)}
 .steps span{color:var(--muted);font-size:.95rem}
+.vid-phone{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.vid-phone .phone{max-width:300px;width:100%}
+.vid-phone video{display:block;width:100%;height:auto;border-radius:34px;background:#0B1510}
+.vid-phone figcaption{font-size:.84rem;color:var(--dim);text-align:center;max-width:300px}
 </style>
 </head>
 <body>
@@ -135,10 +139,19 @@
         <div class="cards"><div class="card"><h3>Crew board</h3><p>Each truck's days laid out, jobs placed by hand where you want them, and anything the crew flags brought straight back to you.</p></div><div class="card"><h3>Week planning</h3><p>The jobs due this week anchor each day, and the work around them fills in by area so trucks are not crossing town for one tree.</p></div><div class="card"><h3>Stumps</h3><p>Every removal followed through to its stump, with what is still outstanding listed for the grinder rather than worked out from memory.</p></div></div>
       </div>
 
-      <div class="pg-sec">
-        <h2>Audits from the phone</h2>
+      <div class="pg-sec" id="audits">
+        <div class="two">
+          <div>
+            <h2>Audits from the phone</h2>
         <p>Pre-works and post-works audit samples are set once in settings. TIMBR picks the trees, sends an optimised route to TIMBR Field, and each audit comes back with its photos attached, ready for the audit report.</p>
         <ul class="tickset"><li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Sample sizes and rules set per contract</li><li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> One route per audit run, in the order you would drive it</li><li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.5 3.5L12.5 4" stroke="#8FBE7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Traffic management checks handled the same way</li></ul>
+            <p>The tree ID is one tap to copy, so finding the same tree in the council's system takes seconds, not a search through the map.</p>
+          </div>
+          <figure class="vid-phone">
+            <div class="phone"><video src="img/audit-run.mp4" poster="img/audit-run-poster.jpg" width="720" height="1560" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of an audit stop in TIMBR Field: copying the tree ID, finding the tree in the council's system, answering the audit, photographing the tree and moving to the next stop"></video></div>
+            <figcaption>An audit stop, start to finish. Addresses and identifying details are blurred.</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="pg-sec">
