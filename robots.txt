@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://timbrfield.com.au/sitemap.xml
+Sitemap: https://arborations.com.au/sitemap.xml
