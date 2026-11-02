@@ -75,6 +75,25 @@
 .vid-phone .phone{max-width:300px;width:100%}
 .vid-phone video{display:block;width:100%;height:auto;border-radius:34px;background:#0B1510}
 .vid-phone figcaption{font-size:.84rem;color:var(--dim);text-align:center;max-width:300px}
+.flip{position:relative;display:grid;grid-template-columns:auto minmax(0,560px) auto;grid-template-areas:"prev page next" ". meta ." ". dots .";gap:14px 18px;align-items:center;justify-content:center;margin-top:18px;outline:none}
+.flip-page{grid-area:page;position:relative;aspect-ratio:900/1273;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--line-strong);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.flip-page img[hidden]{display:none!important}
+.flip-page img{position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;animation:flipin .28s ease}
+@keyframes flipin{from{opacity:0;transform:translateX(var(--dx,24px))}to{opacity:1;transform:none}}
+.flip-btn{display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:center;width:84px;height:84px;border-radius:50%;border:1.5px solid rgba(143,190,124,.55);background:rgba(143,190,124,.14);color:var(--leaf);font:inherit;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .15s,transform .15s,opacity .15s}
+.flip-btn.prev{grid-area:prev}.flip-btn.next{grid-area:next}
+.flip-btn:hover:not(:disabled){background:rgba(143,190,124,.28);transform:scale(1.05)}
+.flip-btn:disabled{opacity:.3;cursor:default}
+.flip-meta{grid-area:meta;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
+.flip-count{color:var(--text);font-size:.95rem}
+.flip-label{color:var(--muted);font-size:.88rem}
+.flip-dots{grid-area:dots;display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.flip-dots button{width:9px;height:9px;padding:0;border-radius:50%;border:none;background:rgba(190,215,185,.28);cursor:pointer}
+.flip-dots button[aria-current="true"]{background:var(--leaf);transform:scale(1.25)}
+@media (max-width:760px){
+  .flip{grid-template-columns:1fr 1fr;grid-template-areas:"page page" "meta meta" "prev next" "dots dots";gap:12px}
+  .flip-btn{width:auto;height:56px;border-radius:14px;flex-direction:row;gap:8px;font-size:.95rem}
+}
 </style>
 </head>
 <body>
@@ -157,7 +176,35 @@
       <div class="pg-sec">
         <h2>Reports in minutes, not an afternoon</h2>
         <p>Weekly updates, monthly contract reports and audit reports are built from the data already in the Hub, with your logo on them, rather than assembled by hand at the end of the week.</p>
-        
+        <h3 id="audit-report" style="margin-top:26px">The post-works audit report</h3>
+        <p>Every audit stop from the phone feeds one report for the council: compliance and progress against the sample target up front, results by crew, every failure with its rework status and photograph, stumps, and the photo evidence for each stop. It is ready to sign and send.</p>
+        <div class="flip" id="flip" tabindex="0" aria-roledescription="carousel" aria-label="Sample post-works audit report, one page at a time">
+          <button class="flip-btn prev" type="button" aria-label="Previous page" disabled>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Back</span>
+          </button>
+          <div class="flip-page">
+            <img src="img/audit-report/page-01.jpg" alt="Sample audit report, page 1: Cover" width="900" height="1273" data-label="Cover">
+            <img src="img/audit-report/page-02.jpg" alt="Sample audit report, page 2: Executive summary and key figures" width="900" height="1273" loading="lazy" data-label="Executive summary and key figures" hidden>
+            <img src="img/audit-report/page-03.jpg" alt="Sample audit report, page 3: Results by crew" width="900" height="1273" loading="lazy" data-label="Results by crew" hidden>
+            <img src="img/audit-report/page-04.jpg" alt="Sample audit report, page 4: Where the audits were taken" width="900" height="1273" loading="lazy" data-label="Where the audits were taken" hidden>
+            <img src="img/audit-report/page-05.jpg" alt="Sample audit report, page 5: Findings, stop by stop" width="900" height="1273" loading="lazy" data-label="Findings, stop by stop" hidden>
+            <img src="img/audit-report/page-06.jpg" alt="Sample audit report, page 6: Failures, reworks and stumps" width="900" height="1273" loading="lazy" data-label="Failures, reworks and stumps" hidden>
+            <img src="img/audit-report/page-07.jpg" alt="Sample audit report, page 7: Stumps still in the ground" width="900" height="1273" loading="lazy" data-label="Stumps still in the ground" hidden>
+            <img src="img/audit-report/page-08.jpg" alt="Sample audit report, page 8: Photos of the non-compliant works" width="900" height="1273" loading="lazy" data-label="Photos of the non-compliant works" hidden>
+            <img src="img/audit-report/page-09.jpg" alt="Sample audit report, page 9: Photos of the non-compliant works" width="900" height="1273" loading="lazy" data-label="Photos of the non-compliant works" hidden>
+            <img src="img/audit-report/page-10.jpg" alt="Sample audit report, page 10: Photo evidence, compliant stops" width="900" height="1273" loading="lazy" data-label="Photo evidence, compliant stops" hidden>
+            <img src="img/audit-report/page-11.jpg" alt="Sample audit report, page 11: Photo evidence, compliant stops" width="900" height="1273" loading="lazy" data-label="Photo evidence, compliant stops" hidden>
+            <img src="img/audit-report/page-12.jpg" alt="Sample audit report, page 12: Stump audit photos" width="900" height="1273" loading="lazy" data-label="Stump audit photos" hidden>
+            <img src="img/audit-report/page-13.jpg" alt="Sample audit report, page 13: Certification" width="900" height="1273" loading="lazy" data-label="Certification" hidden>
+          </div>
+          <button class="flip-btn next" type="button" aria-label="Next page">
+            <span>Next</span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="flip-meta"><b class="flip-count" aria-live="polite">Page 1 of 13</b><span class="flip-label">Cover</span></div>
+          <div class="flip-dots" role="tablist" aria-label="Go to page"><button type="button" aria-label="Page 1" aria-current="true"></button><button type="button" aria-label="Page 2"></button><button type="button" aria-label="Page 3"></button><button type="button" aria-label="Page 4"></button><button type="button" aria-label="Page 5"></button><button type="button" aria-label="Page 6"></button><button type="button" aria-label="Page 7"></button><button type="button" aria-label="Page 8"></button><button type="button" aria-label="Page 9"></button><button type="button" aria-label="Page 10"></button><button type="button" aria-label="Page 11"></button><button type="button" aria-label="Page 12"></button><button type="button" aria-label="Page 13"></button></div>
+        </div>
+        <p style="margin-top:14px"><a class="btn btn-ghost" href="img/timbr-sample-audit-report.pdf" target="_blank" rel="noopener">Download the sample report (PDF)</a></p>
+        <p style="font-size:.84rem;color:var(--dim)">A shortened sample built from a real report, with the company, council, crews, tree IDs and addresses replaced, and the photos blurred around each tree.</p>
       </div>
 
       <div class="pg-sec">
@@ -228,5 +275,25 @@
     </div>
   </div>
 </footer>
+<script>
+(function(){
+  var f=document.getElementById('flip'); if(!f) return;
+  var imgs=[].slice.call(f.querySelectorAll('.flip-page img')), dots=[].slice.call(f.querySelectorAll('.flip-dots button'));
+  var prev=f.querySelector('.prev'), next=f.querySelector('.next'), count=f.querySelector('.flip-count'), label=f.querySelector('.flip-label'), i=0;
+  function go(n){
+    if(n<0||n>=imgs.length||n===i) return;
+    var dx=n>i?'24px':'-24px'; imgs[i].hidden=true; i=n; imgs[i].style.setProperty('--dx',dx); imgs[i].hidden=false;
+    count.textContent='Page '+(i+1)+' of '+imgs.length; label.textContent=imgs[i].getAttribute('data-label');
+    prev.disabled=i===0; next.disabled=i===imgs.length-1;
+    dots.forEach(function(d,k){ if(k===i) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current'); });
+    if(imgs[i+1]) imgs[i+1].loading='eager';
+  }
+  prev.addEventListener('click',function(){go(i-1)}); next.addEventListener('click',function(){go(i+1)});
+  dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+  f.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){go(i+1);e.preventDefault()} if(e.key==='ArrowLeft'){go(i-1);e.preventDefault()} });
+  var x0=null; f.querySelector('.flip-page').addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  f.querySelector('.flip-page').addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) go(i+(dx<0?1:-1)); x0=null; });
+})();
+</script>
 </body>
 </html>
