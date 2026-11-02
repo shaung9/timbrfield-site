@@ -359,3 +359,15 @@ footer{border-top:1px solid var(--line);background:var(--bg0);padding:56px 0 40p
   .art-table td:first-child{white-space:normal}
   .art-table th,.art-table td{overflow-wrap:anywhere}
 }
+
+/* Large brand mark filling the empty right side of inner-page heroes (desktop only) */
+.pg-hero,.res-hero,.calc-hero{position:relative}
+@media (min-width:1080px){
+  .pg-hero::after,.res-hero::after,.calc-hero::after{
+    content:"";position:absolute;right:max(24px,calc((100vw - 1160px)/2 + 24px));top:50%;transform:translateY(-50%);
+    width:270px;height:270px;pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 50 A40 40 0 0 1 90 50' fill='none' stroke='%23F2EFE2' stroke-width='4.9' stroke-linecap='round'/%3E%3Cpath d='M50 22.1 A26.9 26.9 0 0 1 50 75.9' fill='none' stroke='%238FBE7C' stroke-width='4.9' stroke-linecap='round'/%3E%3Cpath d='M50 29.4 C54.5 35 57.4 41 57.4 46.6 C57.4 54 54.5 62 50 68.6 C45.5 62 42.6 54 42.6 46.6 C42.6 41 45.5 35 50 29.4 Z' fill='%238FBE7C'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .pg-hero .container,.res-hero .container,.calc-hero .container{min-height:300px;padding-bottom:24px}
+  .pg-hero .container>*,.res-hero .container>*,.calc-hero .container>*{position:relative;z-index:1;max-width:min(100%,calc(100vw - 2*max(24px,(100vw - 1160px)/2 + 24px) - 330px))}
+}
